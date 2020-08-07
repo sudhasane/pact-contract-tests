@@ -1,0 +1,91 @@
+{
+    "provider": {
+        "name": "student_provider"
+    },
+    "consumer": {
+        "name": "student_consumer"
+    },
+    "interactions": [
+        {
+            "description": "A request to get student details  with id 1",
+            "request": {
+                "method": "GET",
+                "path": "/student/1"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "firstName": "Vernon",
+                    "lastName": "Harper",
+                    "courses": [
+                        "Accounting",
+                        "Statistics"
+                    ],
+                    "id": 1,
+                    "programme": "Financial Analysis",
+                    "email": "egestas.rhoncus.Proin@massaQuisqueporttitor.org"
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.id": {
+                            "matchers": [
+                                {
+                                    "match": "integer"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.firstName": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.lastName": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.email": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.programme": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "There is a student with id 1"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.10"
+        }
+    }
+}
